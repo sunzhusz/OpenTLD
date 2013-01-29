@@ -64,7 +64,7 @@ void ForegroundDetector::nextIteration(const Mat &img)
 
     for(int i = 0; i < contours.size(); i++)
 		if(contourArea(contours[i]) < minArea)
-			contours.erase[i];
+			contours.erase(contours.begin()+i);
 
     vector<Rect>* fgList = detectionResult->fgList;
     fgList->clear();
