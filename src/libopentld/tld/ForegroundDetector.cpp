@@ -54,6 +54,7 @@ void ForegroundDetector::nextIteration(const Mat &img)
     Mat absImg = Mat(img.cols, img.rows, img.type());
     Mat threshImg = Mat(img.cols, img.rows, img.type());
 	std::vector<std::vector<Point> > contours;
+	std::vector<std::vector<Point> > selected_contours;
 	std::vector<Vec4i> hierarchy;
 
     absdiff(bgImg, img, absImg);
@@ -62,16 +63,16 @@ void ForegroundDetector::nextIteration(const Mat &img)
 	findContours(absImg, contours, hierarchy,
 					CV_RETR_TREE, CV_CHAIN_APPROX_SIMPLE, Point(0, 0));
 
-    for(int i = 0; i < contours.size(); i++)
-		if(contourArea(contours[i]) < minArea)
-			contours.erase(contours.begin()+i);
+    for(size_t i = 0; i < contours.size(); i++)
+		if(contourArea(contours[i]) > minArea)
+			selected_contours.push_back(contours[i]);
 
     vector<Rect>* fgList = detectionResult->fgList;
     fgList->clear();
 
-    for(int i = 0; i < contours.size(); i++)
+    for(size_t i = 0; i < selected_contours.size(); i++)
     {
-        std::vector<Point> contour = contours[i];
+        std::vector<Point> contour = selected_contours[i];
         Rect rect = boundingRect(contour);
         fgList->push_back(rect);
     }
