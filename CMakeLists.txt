@@ -67,7 +67,6 @@ set(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
 
 #-------------------------------------------------------------------------------
 #add subdirectories
-add_subdirectory(src/3rdparty/cvblobs)
 
 if(NOT USE_SYSTEM_LIBS)
     add_subdirectory(src/3rdparty/libconfig)
