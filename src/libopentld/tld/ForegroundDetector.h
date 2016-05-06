@@ -39,7 +39,7 @@ namespace tld
 class ForegroundDetector
 {
 public:
-    double fgThreshold;
+    int fgThreshold;
     double minArea;
     cv::Mat bgImg;
     DetectionResult *detectionResult;
