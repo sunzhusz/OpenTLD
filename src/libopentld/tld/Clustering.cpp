@@ -87,7 +87,7 @@ void Clustering::calcDistances(float *distances)
 {
     float *distances_tmp = distances;
 
-    std::ector<int> confidentIndices = *detectionResult->confidentIndices;
+    std::vector<int> confidentIndices = *detectionResult->confidentIndices;
 
     size_t indices_size = confidentIndices.size();
 
