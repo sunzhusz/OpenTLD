@@ -27,7 +27,8 @@
 #ifndef TLD_H_
 #define TLD_H_
 
-#include <cv.h>
+#include <opencv/cv.h>
+#include <opencv2/imgproc/imgproc.hpp>
 
 #include "MedianFlowTracker.h"
 #include "DetectorCascade.h"
