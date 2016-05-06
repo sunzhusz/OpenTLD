@@ -67,7 +67,7 @@ void ForegroundDetector::nextIteration(const Mat &img)
 		if(contourArea(contours[i]) > minArea)
 			selected_contours.push_back(contours[i]);
 
-    vector<Rect>* fgList = detectionResult->fgList;
+    std::vector<Rect>* fgList = detectionResult->fgList;
     fgList->clear();
 
     for(size_t i = 0; i < selected_contours.size(); i++)
